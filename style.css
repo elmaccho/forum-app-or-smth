@@ -110,7 +110,8 @@ main{
     border-radius: 50px;
 }
 .login__wrapper, .register__wrapper{
-    padding: 15px 50px;
+    height: unset;
+    padding: 15px 50px 40px 50px;
     width: max-content;
     display: flex;
     align-items: center;
@@ -135,6 +136,8 @@ main{
     background-color: #F4F4F4;
     text-indent: 15px;
     transition: 0.3s;
+    caret-color: #8F4AFF;
+    caret-shape:bar;
 }
 
 .login__wrapper form .form__input:focus, 
@@ -142,10 +145,39 @@ main{
     border: 2px solid #9A5FFB;
 }
 
+.login__wrapper form .form__submit,
+ .register__wrapper form .form__submit{
+    width: 150px;
+    height: 35px;
+    border-radius: 50px;
+    border: none;
+    color: white;
+    background-color: #8F4AFF;
+    cursor: pointer;
+ }
+
 .login__title, .register__title{
     font-size: 50px;
     color: #8F4AFF;
     font-weight: 600;
+}
+
+.form__remindPassword{
+    text-decoration: none;
+    color: #8F4AFF;
+    width: 100%;
+    font-size: 15px;
+    text-align: right;
+    margin-bottom: 25px;
+}
+
+.form__link{
+    text-decoration: none;
+    color: #8F4AFF;
+    font-weight: 600;
+}
+.form__text{
+    color: rgb(174, 174, 174);
 }
 
 

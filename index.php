@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
                 error_reporting(0);
 
                     if($_GET['page']){
-                        $allowed_pages = array("logowanie", "rejestracja", "start");
+                        $allowed_pages = array("logowanie", "rejestracja", "start","przypomnij haslo");
 
                         $page = filter_var($_GET['page'], FILTER_SANITIZE_STRING);
                         
