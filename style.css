@@ -1,6 +1,11 @@
 body{
     background-color: #8F4AFF;
     margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .blob1{
@@ -8,6 +13,7 @@ body{
     height: 250px;
     position: absolute;
     bottom: 0;
+    z-index: -1;
 }
 .blob1 li{
     background-image: url(./img/blobs/Ellipse\ 1.svg);
@@ -27,9 +33,10 @@ body{
     position: absolute;
     top: 0;
     right: 0;
+    z-index: -1;
 }
 .blob2 li{
-    background-image: url(./Ellipse\ 2.png);
+    background-image: url(./img/blobs/Ellipse\ 2.png);
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
@@ -46,9 +53,10 @@ body{
     position: absolute;
     top: 0;
     left: 0;
+    z-index: -1;
 }
 .blob3 li{
-    background-image: url(./Ellipse\ 3.png);
+    background-image: url(./img/blobs/Ellipse\ 3.png);
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
@@ -56,4 +64,36 @@ body{
 
     position: absolute;
     top: 0;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.main__wrapper{
+    width: 80%;
+    height: 600px;
+    background-color: white;
+    display: flex;
+    overflow: hidden;
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 50px;
+}
+.main__content{
+    width: 50%;
+    height: 100%;
+}
+.main__background{
+    -webkit-clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+    background-image: url(./img/main__background.webp);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-size: cover;
+    height: 100%;
+    width: 50%;
 }
