@@ -8,11 +8,11 @@
 </head>
 <body>
 
-
     <main>
         <?php
                 error_reporting(0);
 
+                
                     if($_GET['page']){
                         $allowed_pages = array("logowanie", "rejestracja", "start","przypomnij haslo");
 
