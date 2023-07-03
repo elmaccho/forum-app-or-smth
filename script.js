@@ -1,59 +1,77 @@
-// const loginWrapper = document.querySelector('.login__wrapper')
-// const loginEmailInput = document.querySelector('.login__emailInput')
-// const loginPasswordInput = document.querySelector('.login__passwordInput')
-// const formSubmit = document.querySelector('.form__submit')
-// // const errorInputText = document.querySelector('.error__input__text')
-// const loginForm = document.querySelector('.loginForm')
-// let errorInputText;
+const password = document.getElementById('password')
+const rpassword = document.getElementById('rpassword')
 
-// const formValidation = (e) => {
-//     // e.preventDefault()
 
-//     // if(loginEmailInput.value === "" || loginPasswordInput.value === ""){
+const passwordPatternBox = document.querySelector('.password__pattern_box')
 
-//     //     loginEmailInput.classList.add('error__input')
-//     //     loginPasswordInput.classList.add('error__input')
-//     //     errorInputText = document.createElement('span')
-//     //     errorInputText.classList.add('error__input__text')
-//     //     errorInputText.textContent = "Wypełnij wszystkie pola!"
-//     //     loginWrapper.appendChild(errorInputText)
+const patternLengthPattern = document.querySelector('.patternLength')
+const patternUppercasePattern = document.querySelector('.patternUppercase')
+const patternDigitPattern = document.querySelector('.patternDigit')
 
-//     // } else {
+const passwordValidator = () => {
+    if(password.value === rpassword.value && password.value.length != 0 && rpassword.value.length != 0){
+        console.log('jest git');
+        password.style.border = "2px solid #8F4AFF";
+        rpassword.style.border = "2px solid #8F4AFF";
+    } else if(password.value.length == 0 && rpassword.value.length == 0){
+        password.style.border = "2px solid #F4F4F4"
+        rpassword.style.border = "2px solid #F4F4F4"
+    } else {
+        password.style.border = "2px solid tomato";
+        rpassword.style.border = "2px solid tomato";
+    }
+}
 
-//     //     if (errorInputText) {
-//     //         loginWrapper.removeChild(errorInputText);
-//     //         loginEmailInput.classList.remove('error__input')
-//     //         loginPasswordInput.classList.remove('error__input')
-//     //       }
-//     // }
+const passwordPatternInfoIn = () => {
+    passwordPatternBox.classList.add('patter_box__in')
+    passwordPatternBox.classList.remove('patter_box__out')
+}
+const passwordPatternInfoOut = () => {
+    passwordPatternBox.classList.remove('patter_box__in')
+    passwordPatternBox.classList.add('patter_box__out')
+}
 
-// }
+const passwordPatternValidator = () => {
+    let patternLength = /^.{8,}$/;
+    let patternUppercase = /[A-Z]/;
+    let patternDigit = /[0-9]/;
 
-// const ValidationFormEmail = (e) => {
-//     if(loginEmailInput.value == ''){
-//         loginEmailInput.classList.add('error__input')
+    let hasLength = patternLength.test(password.value);
+    let hasUppercase = patternUppercase.test(password.value);
+    let hasDigit = patternDigit.test(password.value);
 
-//         errorInputText = document.createElement('span')
-//         errorInputText.classList.add('error__input__text')
-//         errorInputText.textContent = "Wypełnij wszystkie pola!"
-//         loginWrapper.appendChild(errorInputText)
-//     } else {
-//         loginEmailInput.classList.remove('error__input')
-//     }
-// }
+    if(hasLength){
+        patternLengthPattern.style.textDecoration = 'line-through'
+        patternLengthPattern.style.color = '#8F4AFF'
+    } else {
+        patternLengthPattern.style.textDecoration = 'none'
+        patternLengthPattern.style.color = '#232323'
+    }
 
-// const ValidationFormPassword = (e) => {
-//     if(loginPasswordInput.value == ''){
-//         loginPasswordInput.classList.add('error__input')
-//     } else {
-//         loginPasswordInput.classList.remove('error__input')
-//     }
+    if(hasUppercase){
+        patternUppercasePattern.style.textDecoration = 'line-through'
+        patternUppercasePattern.style.color = '#8F4AFF'
+    } else {
+        patternUppercasePattern.style.textDecoration = 'none'
+        patternUppercasePattern.style.color = '#232323'
+    }
 
-//     errorInputText = document.createElement('span')
-//     errorInputText.classList.add('error__input__text')
-//     errorInputText.textContent = "Wypełnij wszystkie pola!"
-//     loginWrapper.appendChild(errorInputText)
-// }
+    if(hasDigit){
+        patternDigitPattern.style.textDecoration = 'line-through'
+        patternDigitPattern.style.color = '#8F4AFF'
+    } else {
+        patternDigitPattern.style.textDecoration = 'none'
+        patternDigitPattern.style.color = '#232323'
+    }
 
-// loginEmailInput.addEventListener('input', ValidationFormEmail)
-// loginPasswordInput.addEventListener('input', ValidationFormPassword)
+    if (hasLength && hasUppercase && hasDigit){
+        console.log('zajebiscie');
+    }
+    
+}
+
+password.addEventListener('input', passwordPatternValidator)
+password.addEventListener('input', passwordValidator)
+rpassword.addEventListener('input', passwordValidator)
+password.addEventListener('focus', passwordPatternInfoIn);
+password.addEventListener('blur', passwordPatternInfoOut);

@@ -12,6 +12,30 @@
     }
 }
 
+@keyframes patternBox__in{
+    0%{
+        transform: scale(0);
+    }
+    50%{
+        transform: scale(1.1);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+@keyframes patternBox__out{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.1);
+    }
+    100%{
+        transform: scale(0);
+    }
+}
+
 body{
     background-color: #8F4AFF;
     margin: 0;
@@ -268,6 +292,29 @@ label{
     border: 2px solid rgb(255, 74, 42);
 }
 
+.password__pattern_box{
+    position: absolute;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: white;
+    top:-25px;
+    left: -25px;
+    transform:scale(0);
+    transform-origin: bottom;
+}
+
+.patter_box__in{
+    animation: patternBox__in 0.3s forwards linear;
+}
+.patter_box__out{
+    animation: patternBox__out 0.3s forwards linear;
+}
+
+.patternLength,.patternUppercase,.patternDigit{
+    transition: 0.3s;
+}
+
 @media screen and (max-width: 862px) {
     .main__background{
         position: absolute;
@@ -325,6 +372,10 @@ label{
     .l__input{
         border-radius: 50px;
         width: 100%;
+    }
+
+    .password__pattern_box{
+        top:25px;
     }
     
 }
