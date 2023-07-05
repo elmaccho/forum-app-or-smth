@@ -8,6 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $password = $_POST['password'];
     $rpassword = $_POST['rpassword'];
 
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
     if (empty($name) || empty($lastName) || empty($email) || empty($password)) {
         $errors[] = "Wypełnij wszystkie pola";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -47,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Dodanie nowego użytkownika do bazy danych
             $insertQuery = "INSERT INTO users (id, imie, nazwisko, haslo, email) VALUES (NULL, ?, ?, ?, ?)";
             $stmt = $conn->prepare($insertQuery);
-            $stmt->bind_param("ssss", $name, $lastName, $password, $email);
+            $stmt->bind_param("ssss", $name, $lastName, $hashedPassword, $email);
             
             if ($stmt->execute()) {
                 echo "Dodano do bazy danych";
