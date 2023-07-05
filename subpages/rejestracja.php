@@ -1,21 +1,67 @@
 <?php
+$errors = [];
 
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $name = $_POST['name'];
     $lastName = $_POST['lastname'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $password = $_POST['password'];
+    $rpassword = $_POST['rpassword'];
 
-    $errors = [];
-
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        if (empty($name) || empty($lastName) || empty($email) || empty($password)) {
-            $errors[] = "Wypełnij wszystkie pola";
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors[] = "Podany adres e-mail jest nieprawidłowy.";
-        }
+    if (empty($name) || empty($lastName) || empty($email) || empty($password)) {
+        $errors[] = "Wypełnij wszystkie pola";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Podany adres e-mail jest nieprawidłowy.";
+    } elseif ($password != $rpassword){
+        $errors[] = "Podane hasła są różne.";
+    } elseif (!preg_match('/^(?=.*[A-Z])(?=.*\d).{8,}$/', $password)) {
+        $errors[] = "Utwórz hasło według odpowiedniego wzoru:<br>
+                    Conajmniej 8 znaków,<br>
+                    Conajmniej 1 duża litera,<br>
+                    Conajmniej 1 cyfra.";
     }
-    ?>
+
+    if (empty($errors)) {
+        $conn = new mysqli("localhost", "root", "", "forumapporsmth");
+
+        if($conn->connect_error){
+            die("Błąd połączenia z bazą danych. Przepraszamy za problemy");
+        }
+        
+        $emailExists = false;
+        $checkEmailQuery = "SELECT * FROM users WHERE email = ?";
+        $stmt = $conn->prepare($checkEmailQuery);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $emailExists = true;
+        }
+
+        $stmt->close();
+
+        if ($emailExists) {
+            $errors[] = "Podany adres e-mail jest już przypisany do konta.";
+        } else {
+            // Dodanie nowego użytkownika do bazy danych
+            $insertQuery = "INSERT INTO users (id, imie, nazwisko, haslo, email) VALUES (NULL, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($insertQuery);
+            $stmt->bind_param("ssss", $name, $lastName, $password, $email);
+            
+            if ($stmt->execute()) {
+                echo "Dodano do bazy danych";
+            } else {
+                echo "Błąd: " . $stmt->error;
+            }
+
+            $stmt->close();
+        }
+
+        $conn->close();
+    }
+}
+?>
 
         <div class='register__wrapper'>
             <h2 class='register__title'>Rejestracja</h2>
@@ -52,3 +98,6 @@
                 }
             ?>
         </div>
+
+
+
