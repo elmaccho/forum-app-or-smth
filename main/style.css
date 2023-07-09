@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body{
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+nav{
+    background-color: #8F4AFF;
+    width: 25%;
+    padding:  20px;
+    box-sizing: border-box;
+
+    position: fixed;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.main__buttons,.profile__buttons,.setting_buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+.nav__search{
+    position: relative;
+    width: 100%;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav__title{
+    font-size: 30px;
+    color: white;
+    font-weight:bolder;
+}
+
+
+
+.nav__button{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    min-height: 30px;
+}
+.nav__button .outer__text{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.faIcon{
+    width: 20px;
+}
+
+.search__input{
+    width: 100%;
+    height: 35px;
+    border-radius: 50px;
+    border: none;
+    text-indent: 15px;
+    outline: none;
+}
+
+.search__button{
+    position: absolute;
+    right: 10px;
+    top:50%;
+    transform: translateY(-50%);
+
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout__pannel{
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    background-color: #9A5FFB;
+    
+    position: absolute;
+    bottom: 0;
+    left:0;
+}
+
+.profile__image{
+    max-width: 50px;
+    border-radius: 15px;
+}
+
+main{
+    min-height: 200vh;
+}
+
+@media screen and (min-width: 481px) and (max-width: 860px){
+    nav{
+        align-items: center;
+    }
+
+    .nav__title{
+        font-size: 0px;
+    }
+
+    .nav__title::first-letter{
+        font-size: 8vw;
+    }
+
+    .faIcon{
+        display: none;
+        width: 0px;
+        opacity: 0;
+    }
+    .nav__button{
+        font-size: 2.5vw;
+    }
+
+    .profile__image{
+        max-width: 7vw;
+    }
+}
+
+@media screen and (max-width: 480px){
+    nav{
+        align-items: center;
+        gap: 45px;
+        padding: 20px 10px;
+    }
+
+    .nav__title{
+        font-size: 0px;
+    }
+
+    .nav__title::first-letter{
+        font-size: 40px;
+    }
+
+    .nav__button{
+        font-size: 25px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .inner__text{
+        display: none;
+    }
+    .profile__image{
+        display: none;
+    }
+    .faIcon{
+        width: 100%;
+    }
+
+    .search__input{
+        display: none;
+    }
+    .search__button{
+        background-color: white;
+        /* position: unset; */
+        height: 45px;
+        min-width: 45px;
+        border-radius: 45px;
+
+        left: unset;
+        right: unset;
+        /* transform: ; */
+    }
+
+    .main__buttons,.profile__buttons,.setting_buttons{
+        gap: 10px;
+    }
+    .nav__search__open{
+        width: 50vw;
+        transform:translate(50%, -12%);
+        background-color: #8F4AFF;
+        padding: 10px;
+        transition: 0.3s;
+        border-radius: 50px;
+    }
+    .search__open{
+        display: flex;
+        height: 45px;
+        right: 10px;
+    }
+}
+
