@@ -89,18 +89,44 @@
         </div>
 
         <div class="logout__pannel">
-            <a class="nav__button" href="./subpages/logout.php">
-                <span class="outer__text">
+                <a class="profile__btn" href="?page=profile">
                     <img class="profile__image" src="./img/profile/profile-default.jpg" alt="">
+                </a>
+                
+                
+                <a class="nav__button" href="./subpages/logout.php">
                     <i class="faIcon fa-solid fa-right-to-bracket"></i>
                     <span class="inner__text">Wyloguj</span>
-                </span>
-            </a>
+                </a>
         </div>
     </nav>
 
     <main>
-        <span class="main__title"> Witaj <?php echo $name?> </span>
+
+        <?php
+                error_reporting(0);
+
+                    if($_GET['page']){
+                        $allowed_pages = array("home", "newpost", "category",
+                        "profile","messages","notifications","settings");
+
+                        $page = filter_var($_GET['page'], FILTER_SANITIZE_STRING);
+                        
+                        if(!empty($page)){
+                            if(!in_array($page, $allowed_pages)){
+                                include("./subpages/404.php");
+                            } else {
+                                if(is_file("./subpages/".$page.".php")){
+                                    include("./subpages/".$page.".php");
+                                } else{
+                                    echo "strona nie istnieje";
+                                }
+                            }
+                        }
+                    } else {
+                        include("./subpages/mainStart.php");
+                    }
+        ?>
 
     </main>
     <script src="./script.js"></script>
