@@ -1,3 +1,13 @@
+<?php
+    session_start();
+
+    if (!isset($_SESSION['email'])){
+        header('Location: ../index.php?page=logowanie');
+        exit();
+    }
+    $name = $_SESSION['imie'];
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -79,8 +89,7 @@
         </div>
 
         <div class="logout__pannel">
-            <a class="nav__button" href="?page=logout">
-                
+            <a class="nav__button" href="./subpages/logout.php">
                 <span class="outer__text">
                     <img class="profile__image" src="./img/profile/profile-default.jpg" alt="">
                     <i class="faIcon fa-solid fa-right-to-bracket"></i>
@@ -91,8 +100,7 @@
     </nav>
 
     <main>
-
-
+        <span class="main__title"> Witaj <?php echo $name?> </span>
 
     </main>
     <script src="./script.js"></script>

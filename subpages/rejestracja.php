@@ -52,7 +52,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmt->bind_param("ssss", $name, $lastName, $hashedPassword, $email);
             
             if ($stmt->execute()) {
-                echo "Dodano do bazy danych";
+                header("Location: ?page=logowanie");
+                die();
             } else {
                 echo "Błąd: " . $stmt->error;
             }
