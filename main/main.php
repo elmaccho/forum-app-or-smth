@@ -104,11 +104,10 @@
                     <?php 
 
 
-                        echo "<img class='profile__image' src='$profImg' alt=''>"; 
+                        echo "<img class='profile__image' src='/main/img/default/$profImg' alt=''>"; 
                     ?>
                 </a>
-                
-                
+            
                 <a class="nav__button" href="./subpages/logout.php">
                     <i class="faIcon fa-solid fa-right-to-bracket"></i>
                     <span class="inner__text">Wyloguj</span>
