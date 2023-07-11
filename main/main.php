@@ -100,12 +100,9 @@
 
         <div class="logout__pannel">
                 <a class="profile__btn" href="?page=profile">
-                    
-                    <?php 
-
-
-                        echo "<img class='profile__image' src='/main/img/default/$profImg' alt=''>"; 
-                    ?>
+                    <?php
+                        echo "<img class='profile__image' src='./img/default/$profImg' alt=''>";
+                   ?>
                 </a>
             
                 <a class="nav__button" href="./subpages/logout.php">
@@ -116,7 +113,6 @@
     </nav>
 
     <main>
-
         <?php
                 error_reporting(0);
 
@@ -142,6 +138,6 @@
                     }
         ?>  
     </main>
-    <script src="./script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

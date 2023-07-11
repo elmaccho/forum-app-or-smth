@@ -1,20 +1,20 @@
-    
-        <!-- // session_start();
+    <!-- // session_start();
 
-        // $conn = new mysqli("localhost", "root", "", "forumapporsmth");
-        // $query = "SELECT imie, nazwisko, haslo, profile_img, background_img, biogram, miejscePracy FROM users";
-        // $result = $conn->query($query);
-        // $row = $result->fetch_assoc();
+    // $conn = new mysqli("localhost", "root", "", "forumapporsmth");
+    // $query = "SELECT imie, nazwisko, haslo, profile_img, background_img, biogram, miejscePracy FROM users";
+    // $result = $conn->query($query);
+    // $row = $result->fetch_assoc();
 
-        // $name = $row['imie'];
-        // $lastName = $row['nazwisko'];
-        // $password = $row['haslo'];
-        // $profileImg = $row['profile_img'];
-        // $backgroundImg = $row['background_img'];
-        // $biography = $row['biogram'];
-        // $workplace = $row['miejscePracy'];
+    // $name = $row['imie'];
+    // $lastName = $row['nazwisko'];
+    // $password = $row['haslo'];
+    // $profileImg = $row['profile_img'];
+    // $backgroundImg = $row['background_img'];
+    // $biography = $row['biogram'];
+    // $workplace = $row['miejscePracy'];
 
-        // $conn->close(); -->
+    // $conn->close(); -->
+
     
 
 <div class="main__settings">
@@ -22,7 +22,9 @@
         <h2 class="sett__title">
             Zdjęcie profilowe
         </h2>
-
+            <?php
+                echo "<img class='' src='./img/default/$profImg' alt=''>";
+            ?>
         <button class="sett__changeBtn">
             Edytuj
         </button>
