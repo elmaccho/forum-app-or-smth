@@ -6,6 +6,16 @@
         exit();
     }
     $name = $_SESSION['imie'];
+    
+    $conn = new mysqli("localhost", "root", "", "forumapporsmth");
+    $query = "SELECT profile_img, background_img FROM users";
+    $result = $conn->query($query);
+    $row = $result->fetch_assoc();
+
+    $profImg = $row['profile_img'];
+    $bckImg = $row['background_img'];
+
+    $conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -90,7 +100,12 @@
 
         <div class="logout__pannel">
                 <a class="profile__btn" href="?page=profile">
-                    <img class="profile__image" src="./img/profile/profile-default.jpg" alt="">
+                    
+                    <?php 
+
+
+                        echo "<img class='profile__image' src='$profImg' alt=''>"; 
+                    ?>
                 </a>
                 
                 
@@ -126,8 +141,7 @@
                     } else {
                         include("./subpages/mainStart.php");
                     }
-        ?>
-
+        ?>  
     </main>
     <script src="./script.js"></script>
 </body>
