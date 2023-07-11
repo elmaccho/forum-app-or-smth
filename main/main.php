@@ -5,18 +5,24 @@
         header('Location: ../index.php?page=logowanie');
         exit();
     }
-    $name = $_SESSION['imie'];
+
+    $email = $_SESSION['email'];
     
     $conn = new mysqli("localhost", "root", "", "forumapporsmth");
-    $query = "SELECT profile_img, background_img FROM users";
-    $result = $conn->query($query);
+    
+    $query = "SELECT profile_img, background_img FROM users WHERE email = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
     $row = $result->fetch_assoc();
-
-    $profImg = $row['profile_img'];
-    $bckImg = $row['background_img'];
+    
+    $profImg = $row['profile_img'] ?? ''; // Set a default value if profile_img is not set
+    $bckImg = $row['background_img'] ?? ''; // Set a default value if background_img is not set
 
     $conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -101,8 +107,8 @@
         <div class="logout__pannel">
                 <a class="profile__btn" href="?page=profile">
                     <?php
-                        echo "<img class='profile__image' src='./img/default/$profImg' alt=''>";
-                   ?>
+                        echo "<img class='profile__image' src='./img/$profImg' alt=''>";
+                    ?>
                 </a>
             
                 <a class="nav__button" href="./subpages/logout.php">
@@ -111,7 +117,6 @@
                 </a>
         </div>
     </nav>
-
     <main>
         <?php
                 error_reporting(0);

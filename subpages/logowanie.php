@@ -1,44 +1,53 @@
 <?php
 $errors = [];
 
-if ($_SERVER["REQUEST_METHOD"] === "POST"){
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        if (empty($email) || empty($password)) {
-            $errors[] = "Wypełnij wszystkie pola";
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors[] = "Podany adres e-mail jest nieprawidłowy.";
-        }
+    if (empty($email) || empty($password)) {
+        $errors[] = "Wypełnij wszystkie pola";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Podany adres e-mail jest nieprawidłowy.";
     }
 
-    if (empty($errors)){
+    if (empty($errors)) {
         $conn = new mysqli("localhost", "root", "", "forumapporsmth");
 
-        if($conn->connect_error){
+        if ($conn->connect_error) {
             die("Błąd połączenia z bazą danych. Przepraszamy za problemy");
         }
 
-        $query = "SELECT email, haslo FROM users WHERE email = '$email'";
-
-        $result = $conn->query($query);
+        $query = "SELECT email, haslo, profile_img FROM users WHERE email = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
         if ($result->num_rows == 1) {
             $row = $result->fetch_assoc();
             $hashedPassword = $row['haslo'];
-        
+
             if (password_verify($password, $hashedPassword)) {
                 session_start();
                 $_SESSION['email'] = $email;
-        
-                $query = "SELECT imie FROM users WHERE email = '$email'";
-                $result = $conn->query($query);
+
+                $profileImg = $row['profile_img'];
+
+                $_SESSION['profile_img'] = $profileImg;
+
+                $stmt->close(); // Close the previous statement before executing the new query
+
+                $query = "SELECT imie FROM users WHERE email = ?";
+                $stmt = $conn->prepare($query);
+                $stmt->bind_param("s", $email);
+                $stmt->execute();
+                $result = $stmt->get_result();
                 $user = $result->fetch_assoc();
                 $imie = $user['imie'];
-        
+
                 $_SESSION['imie'] = $imie;
-        
+
                 header('Location: ./main/main.php');
                 exit();
             } else {
@@ -47,9 +56,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
         } else {
             $errors[] = "Nieprawidłowy e-mail";
         }
+
+        $stmt->close();
     }
 }
 ?>
+
+
 
 <div class='login__wrapper'>
     <h2 class='login__title'>Logowanie</h2>

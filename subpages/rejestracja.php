@@ -10,7 +10,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $default_profImg = "profile-default.jpg";
     $default_bckgImg = "background-default.jpg";
     $default_biography = "";
-    $default_workplace = "";
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
@@ -50,9 +49,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($emailExists) {
             $errors[] = "Podany adres e-mail jest już przypisany do konta.";
         } else {
-            $insertQuery = "INSERT INTO users (id, imie, nazwisko, haslo, email, profile_img, background_img, biogram, miejsce_pracy) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $insertQuery = "INSERT INTO users (id, imie, nazwisko, haslo, email, profile_img, background_img, biogram) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($insertQuery);
-            $stmt->bind_param("ssssssss", $name, $lastName, $hashedPassword, $email, $default_profImg, $default_bckgImg, $default_biography, $default_workplace);
+            $stmt->bind_param("sssssss", $name, $lastName, $hashedPassword, $email, $default_profImg, $default_bckgImg, $default_biography);
             
             if ($stmt->execute()) {
                 header("Location: ?page=logowanie");
@@ -62,21 +61,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
 
             $stmt->close();
-
-
-
-            // $insertQuery = "INSERT INTO users (id, imie, nazwisko, haslo, email, profile_img, background_img, biogram, miejsce_pracy) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
-            // $stmt = $conn->prepare($insertQuery);
-            // $stmt->bind_param("sssssssss", $name, $lastName, $hashedPassword, $email, $default_profImg, $default_bckgImg, $default_biography, $default_workplace);
-            
-            // if ($stmt->execute()) {
-            //     header("Location: ?page=logowanie");
-            //     die();
-            // } else {
-            //     echo "Błąd: " . $stmt->error;
-            // }
-
-            // $stmt->close();
         }
 
         $conn->close();

@@ -23,6 +23,11 @@ nav{
     overflow: hidden;
 }
 
+main{
+    overflow-y: scroll;
+    height: 100vh;
+}
+
 .main__buttons,.profile__buttons,.setting_buttons{
     display: flex;
     flex-direction: column;
@@ -129,6 +134,57 @@ main{
 
 .main__title{
     font-size: 70px;
+}
+
+.main__settings{
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+}
+
+.sett__box{
+    background-color: #D9D9D9;
+    padding: 15px 20px;
+    border-radius: 23px;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+.sett__box span{
+    width: 50%;
+}
+
+.sett__title{
+
+}
+
+.sett__changeBtn{
+    border: none;
+    font-size: 25px;
+    background-color: transparent;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.profile__img{
+    min-width: 10%;
+    max-width: 30%;
+}
+.background__img{
+    width: 70%;
+}
+
+.biography__input{
+    width: 60%;
+    height: 60px;
+    outline: none;
+    border-radius: 23px;
+    border: none;
+    resize: none;
+    padding: 15px;
 }
 
 @media screen and (min-width: 481px) and (max-width: 860px){
