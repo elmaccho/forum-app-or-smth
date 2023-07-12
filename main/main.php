@@ -5,8 +5,9 @@
         header('Location: ../index.php?page=logowanie');
         exit();
     }
-
+    
     $email = $_SESSION['email'];
+    $name = $_SESSION['name'];
     
     $conn = new mysqli("localhost", "root", "", "forumapporsmth");
     

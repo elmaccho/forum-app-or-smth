@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             die("Błąd połączenia z bazą danych. Przepraszamy za problemy");
         }
 
-        $query = "SELECT email, haslo, profile_img FROM users WHERE email = ?";
+        $query = "SELECT imie, email, haslo, profile_img FROM users WHERE email = ?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -30,23 +30,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             if (password_verify($password, $hashedPassword)) {
                 session_start();
-                $_SESSION['email'] = $email;
-
                 $profileImg = $row['profile_img'];
-
                 $_SESSION['profile_img'] = $profileImg;
 
-                $stmt->close(); // Close the previous statement before executing the new query
+                $_SESSION['email'] = $email;
 
-                $query = "SELECT imie FROM users WHERE email = ?";
-                $stmt = $conn->prepare($query);
-                $stmt->bind_param("s", $email);
-                $stmt->execute();
-                $result = $stmt->get_result();
-                $user = $result->fetch_assoc();
-                $imie = $user['imie'];
+                $name = $row['imie'];
+                $_SESSION['name'] = $name; // Poprawiona linia
 
-                $_SESSION['imie'] = $imie;
+                $stmt->close();
 
                 header('Location: ./main/main.php');
                 exit();
@@ -61,6 +53,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
+
+
 
 
 
