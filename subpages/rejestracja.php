@@ -7,8 +7,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $rpassword = $_POST['rpassword'];
-    $default_profImg = "profile-default.jpg";
-    $default_bckgImg = "background-default.jpg";
+    $default_profImg = "default/profile-default.jpg";
+    $default_bckgImg = "default/background-default.jpg";
     $default_biography = "";
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);

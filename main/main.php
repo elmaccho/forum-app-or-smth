@@ -7,19 +7,22 @@
     }
     
     $email = $_SESSION['email'];
-    $name = $_SESSION['name'];
     
     $conn = new mysqli("localhost", "root", "", "forumapporsmth");
     
-    $query = "SELECT profile_img, background_img FROM users WHERE email = ?";
+    $query = "SELECT id, imie, nazwisko, haslo, email, profile_img, background_img, biogram FROM users WHERE email = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
-    
+
+    $name = $row['imie'];
+    $lastname = $row['nazwisko'];
+    $password = $row['haslo'];
     $profImg = $row['profile_img'] ?? ''; // Set a default value if profile_img is not set
     $bckImg = $row['background_img'] ?? ''; // Set a default value if background_img is not set
+    $biography = $row['biogram'] ?? '';
 
     $conn->close();
 ?>

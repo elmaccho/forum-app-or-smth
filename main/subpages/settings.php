@@ -1,3 +1,5 @@
+<?php include 'main/main.php'; ?>
+
 <div class="main__settings">
     <div class="sett__box">
         <span>
@@ -165,7 +167,9 @@
 
             <form method="post">
                 <span class="biography__span">
-                    <textarea class="biography__input" name="biography" id="" maxlength="150"></textarea>
+                    <?php 
+                        echo "<textarea class='biography__input' name='biography' id='' maxlength='150'>$biography</textarea>";
+                    ?>
 
                     <span class="textarea__counter">0/150</span>
 
@@ -185,7 +189,7 @@
                     $query = "UPDATE users SET biogram = '$biography' WHERE email = '$email'";
 
                     if($conn->query($query) === TRUE){
-                        echo "Zaktualizowano biogram";
+                        header("Refresh:2");
                     }
 
                     $conn->close();
@@ -198,10 +202,30 @@
             </h2>
             <form method="post">
                     <?php 
-                    echo $email;
-                        echo "<input type='text' name='' id='' placeholder='$name'>";
+                        echo "<input type='text' name='firstName' id='' value='$name'>";
+                        echo "<input type='text' name='lastName' id='' value='$lastname'>";
+
+                        if(isset($_POST['firstName']) && isset($_POST['lastName']) && !empty($_POST['firstName']) && !empty($_POST['lastName'])){
+                            $firstname = $_POST['firstName'];
+                            $lastname = $_POST['lastName'];
+
+                            $conn = new mysqli("localhost", "root", "", "forumapporsmth");
+
+                            if($conn->connect_error){
+                                die("Błąd połączenia z bazą danych: " . $conn->connect_error);
+                            } else {
+                                $firstname = $conn->real_escape_string($firstname);
+                                $lastname = $conn->real_escape_string($lastname);
+
+                                $query = "UPDATE users SET imie = '$firstname', nazwisko = '$lastname' WHERE email = '$email'";
+
+                                if($conn->query($query) === TRUE){
+                                    echo "Zaktualizowano";
+                                }
+                            }
+                        }
                     ?>
-                    <input type="text" name="" id="" placeholder="Nazwisko">
+                    
                     <input type="submit" value="Zatwierdź">
             </form>
     </div>
@@ -210,8 +234,39 @@
                 Zmień hasło
             </h2>
             <form method="post">
-                    <input type="password" name="" id="" placeholder="Stare hasło">
-                    <input type="password" name="" id="" placeholder="Nowe hasło">
+                <?php
+                    echo "<input type='password' name='actPassword' id='' placeholder='Stare hasło'>";
+                    echo "<input type='password' name='newPassword' id='' placeholder='Nowe hasło'>";
+
+                    if(isset($_POST['actPassword']) && isset($_POST['newPassword']) && !empty($_POST['actPassword']) && !empty($_POST['newPassword'])){
+                        $actPassword = $_POST['actPassword'];
+                        $newPassword = $_POST['newPassword'];
+
+                        $conn = new mysqli("localhost", "root", "", "forumapporsmth");
+
+                        if($conn->connect_error){
+                            die("Błąd połączenia z bazą danych: " . $conn->connect_error);
+                        } else {
+                            $actPassword = $conn->real_escape_string($actPassword);
+                            $newPassword = $conn->real_escape_string($newPassword);
+
+
+                            if(password_verify($actPassword, $password)){
+                                $newHashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
+                                $query = "UPDATE users SET haslo = '$newHashedPassword' WHERE email = '$email'";
+
+                                if($conn->query($query) === TRUE){
+                                    echo "Zmieniono hasło";
+                                }
+                            } else {
+                                echo "Nieprawidłowe hasło";
+                            }
+                        }
+                        $conn->close();
+                    }
+
+                ?>
                     <input type="submit" value="Zatwierdź">
             </form>
     </div>
