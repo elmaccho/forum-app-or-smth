@@ -20,4 +20,11 @@
         ?>
     </div>
 
+    <div class="main__row2">
+        <span class="biography__title">Biogram</span>
+        <?php
+            echo $biography;
+        ?>
+    </div>
+
 </div>
