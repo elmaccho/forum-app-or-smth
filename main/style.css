@@ -314,6 +314,10 @@ main{
     gap: 15px;
 }
 
+.godpanel__title{
+    font-size: 45px;
+}
+
 .user__box{
     display: flex;
     align-items: center;

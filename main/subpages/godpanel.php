@@ -14,6 +14,8 @@
 
 
 <div class="main__godpanel">
+    <span class="godpanel__title">Panel Administracyjny</span>
+    
     <div class="user__box">
         <img class="user__img" src="./img/PiHQ.png" alt="">
         <span class="user__fullname">Maciej Chojnacki</span>
