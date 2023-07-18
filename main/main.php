@@ -10,7 +10,7 @@
     
     $conn = new mysqli("localhost", "root", "", "forumapporsmth");
     
-    $query = "SELECT id, imie, nazwisko, haslo, email, profile_img, background_img, biogram FROM users WHERE email = ?";
+    $query = "SELECT id, imie, nazwisko, haslo, email, profile_img, background_img, biogram, ranga FROM users WHERE email = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -23,6 +23,7 @@
     $profImg = $row['profile_img'] ?? ''; // Set a default value if profile_img is not set
     $bckImg = $row['background_img'] ?? ''; // Set a default value if background_img is not set
     $biography = $row['biogram'] ?? '';
+    $rank = $row['ranga'] ?? '';
 
     $conn->close();
 ?>
@@ -106,6 +107,22 @@
                     <span class="inner__text">Ustawienia</span>
                 </span>
             </a>
+            
+            <?php
+                if($rank === "Administrator" || $rank === "Właściciel"){
+                    echo "
+                    <a class='nav__button' href='?page=godpanel'>
+                        <span class='outer__text'>
+                            <i class='faIcon fa-solid fa-gears'></i> 
+                            <span class='inner__text'>Panel Administracyjny</span>
+                        </span>
+                    </a>
+                    ";
+                }
+            ?>
+            
+
+            
         </div>
 
         <div class="logout__pannel">
@@ -127,7 +144,7 @@
 
                     if($_GET['page']){
                         $allowed_pages = array("home", "newpost", "category",
-                        "profile","messages","notifications","settings");
+                        "profile","messages","notifications","settings", "godpanel");
 
                         $page = filter_var($_GET['page'], FILTER_SANITIZE_STRING);
                         
@@ -138,7 +155,7 @@
                                 if(is_file("./subpages/".$page.".php")){
                                     include("./subpages/".$page.".php");
                                 } else{
-                                    echo "strona nie istnieje";
+                                    echo "strona w budowie";
                                 }
                             }
                         }
