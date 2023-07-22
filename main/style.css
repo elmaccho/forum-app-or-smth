@@ -5,12 +5,12 @@ body{
     font-family: 'Poppins', sans-serif;
 
     display: flex;
+    flex-direction: column;
 }
 
 nav{
     background-color: #8F4AFF;
-    width: 24%;
-    max-width: 300px;
+    width: 25%;
     padding:  20px;
     box-sizing: border-box;
 
@@ -24,10 +24,14 @@ nav{
 }
 
 main{
+    width: 75%;
+    margin-left: auto;
+    padding: 30px 55px;
+    box-sizing: border-box;
+
     overflow-y: scroll;
     height: 100vh;
 }
-
 .main__buttons,.profile__buttons,.setting_buttons{
     display: flex;
     flex-direction: column;
@@ -120,12 +124,6 @@ main{
     border-radius: 15px;
 }
 
-main{
-    width: 80%;
-    margin-left: auto;
-    padding: 30px 55px;
-    box-sizing: border-box;
-}
 
 .main__greetings{
     display: flex;
@@ -182,9 +180,6 @@ main{
     resize: none;
     padding: 15px;
 }
-.biography__span{
-    
-}
 
 .main__profile{
     display: flex;
@@ -198,7 +193,6 @@ main{
     height: 400px;
     overflow: hidden;
     border-radius: 23px;
-    overflow: hidden;
 }
 
 .main__profImg{
@@ -214,9 +208,10 @@ main{
 }
 
 .bckImg{
-    z-index: -1;
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: top left;
 }
 
 .profImg{
@@ -368,7 +363,27 @@ main{
     right: 15px;
 }
 
+@media screen and (max-width: 1038px) {
 
+    main{
+        padding: 20px 20px;
+    }
+
+    .main__profImg{
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .main__bckImg{
+        overflow: unset;
+    }
+    .bckImg{
+        border-radius: 23px;
+    }
+    .main__row1{
+        flex-direction: column;
+    }
+}
 
 @media screen and (min-width: 481px) and (max-width: 860px){
     nav{
@@ -394,6 +409,25 @@ main{
 
     .profile__image{
         max-width: 7vw;
+    }
+    
+
+    .main__fullname{
+        font-size: 6vw;
+    }
+
+    .main__profImg{
+        width: 36vw;
+        height: 36vw;
+
+        top: unset;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 10%);
+    }
+
+    .redSett__btn{
+        padding: 1vw 3.5vw;
     }
 }
 
