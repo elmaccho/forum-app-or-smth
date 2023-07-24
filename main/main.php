@@ -40,6 +40,11 @@
 </head>
 <body>
     <nav>
+
+        <button class="nav__close">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
         <h2 class="nav__title">
             Forum app<br>
             or smth
@@ -139,6 +144,11 @@
         </div>
     </nav>
     <main>
+
+        <button class="nav__open">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
         <?php
                 error_reporting(0);
 

@@ -21,6 +21,8 @@ nav{
     flex-direction: column;
     gap: 30px;
     overflow: hidden;
+
+    transform: unset;
 }
 
 main{
@@ -32,6 +34,42 @@ main{
     overflow-y: scroll;
     height: 100vh;
 }
+
+.nav__close{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 35px;
+
+    background-color: transparent;
+    color: white;
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+
+    display: none;
+}
+
+.nav__open{
+    position: fixed;
+    z-index: 1;
+    background-color: #8F4AFF;
+    color: white;
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+    height: 55px;
+    width: 55px;
+    border-radius: 50px;
+    font-size: 35px;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
 .main__buttons,.profile__buttons,.setting_buttons{
     display: flex;
     flex-direction: column;
@@ -389,26 +427,24 @@ main{
     nav{
         align-items: center;
         position: fixed;
-        z-index: 1;
+        z-index: 2;
+        width: 50%;
+
+        transform: translateX(-100%);
+        transition: 0.3s;
     }
 
     main{
         width: 100%;
     }
 
-    .nav__title{
-        font-size: 0px;
+    .nav__close{
+        display: flex;
+    }
+    .nav__open{
+        display: flex;
     }
 
-    .nav__title::first-letter{
-        font-size: 8vw;
-    }
-
-    .faIcon{
-        display: none;
-        width: 0px;
-        opacity: 0;
-    }
     .nav__button{
         font-size: 2.5vw;
     }
