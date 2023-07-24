@@ -487,10 +487,6 @@ main{
     .nav__button{
         font-size: 4vw;
         display: flex;
-        /* justify-content: center; */
-        /* align-items: center; */
-    }
-    .inner__text{
-        /* display: none; */
+        align-items: center;
     }
 }
