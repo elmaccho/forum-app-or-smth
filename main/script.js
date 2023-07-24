@@ -5,8 +5,8 @@ const navInput = document.querySelector('.search__input')
 const textareaCounter = document.querySelector('.textarea__counter')
 const biographyInput = document.querySelector('.biography__input')
 
-const navClose = document.querySelector('.nav__close')
-const navOpen = document.querySelector('.nav__open')
+const navCloseBtn = document.querySelector('.nav__closeBtn')
+const navOpenBtn = document.querySelector('.nav__openBtn')
 const nav = document.querySelector('nav')
 
 const toggleSearch = () => {
@@ -28,17 +28,19 @@ const biographyCounter = () => {
 }
 
 const openNav = () => {
-    nav.style.transform = "translateX(0%)"
+    nav.classList.add('openNav')
+    nav.classList.remove('closeNav')
 }
 
 const closeNav = () => {
-    nav.style.transform = "translateX(-100%)"
+    nav.classList.remove('openNav')
+    nav.classList.add('closeNav')
 }
 
-navOpen.addEventListener('click', openNav)
-navClose.addEventListener('click', closeNav)
+navOpenBtn.addEventListener('click', openNav)
+navCloseBtn.addEventListener('click', closeNav)
 document.addEventListener('click', e => {
-    if(!nav.contains(e.target) && !navOpen.contains(e.target)){
+    if(!nav.contains(e.target) && !navOpenBtn.contains(e.target)){
         closeNav()
     }
 })

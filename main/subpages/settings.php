@@ -2,14 +2,14 @@
 
 <div class="main__settings">
     <div class="sett__box">
-        <span>
+        <span class="span">
             <h2 class="sett__title">
                 Zdjęcie profilowe
             </h2>
             <form method="post" enctype="multipart/form-data">
                 <input type="hidden" name="MAX_FILE_SIZE" value="900000">
-                <input type="file" name="profileImg" id="">
-                <input type="submit" value="Wyślij">
+                <input type="file" name="profileImg" id=""><br>
+                <input type="submit" value="Wyślij" class="sett__button">
             </form>
             <?php
                 if (isset($_POST['profileImg'])) {
@@ -81,14 +81,14 @@
             ?>
     </div>
     <div class="sett__box">
-        <span>
+        <span class="span">
             <h2 class="sett__title">
                 Zdjęcie w tle
             </h2>
             <form method="post" enctype="multipart/form-data">
                 <input type="hidden" name="MAX_FILE_SIZE" value="9000000">
-                <input type="file" name="backgroundImg" id="">
-                <input type="submit" value="Wyślij">
+                <input type="file" name="backgroundImg" id=""><br>
+                <input type="submit" value="Wyślij" class="sett__button">
             </form>
             <?php
                 if (isset($_POST['backgroundImg'])) {
@@ -165,7 +165,7 @@
                 Biogram
             </h2>
 
-            <form method="post">
+            <form method="post" class="sett__bioForm">
                 <span class="biography__span">
                     <?php 
                         echo "<textarea class='biography__input' name='biography' id='' maxlength='150'>$biography</textarea>";
@@ -174,7 +174,7 @@
                     <span class="textarea__counter">0/150</span>
 
                 </span>
-                <input type="submit" value="Zatwierdź">
+                <input type="submit" value="Zatwierdź" class="sett__button">
             </form>
             <?php
                 if(isset($_POST['biography'])){
@@ -201,7 +201,7 @@
                 Imię i nazwisko
             </h2>
             <form method="post">
-                    <?php 
+                <?php 
                         echo "<input type='text' name='firstName' id='' value='$name'>";
                         echo "<input type='text' name='lastName' id='' value='$lastname'>";
 
@@ -224,9 +224,8 @@
                                 }
                             }
                         }
-                    ?>
-                    
-                    <input type="submit" value="Zatwierdź">
+                ?>
+                    <input type="submit" value="Zatwierdź" class="sett__button">
             </form>
     </div>
     <div class="sett__box">
@@ -267,7 +266,7 @@
                     }
 
                 ?>
-                    <input type="submit" value="Zatwierdź">
+                    <input type="submit" value="Zatwierdź" class="sett__button">
             </form>
     </div>
 </div>

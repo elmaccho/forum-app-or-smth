@@ -41,7 +41,7 @@
 <body>
     <nav>
 
-        <button class="nav__close">
+        <button class="nav__closeBtn">
             <i class="fa-solid fa-xmark"></i>
         </button>
 
@@ -145,7 +145,7 @@
     </nav>
     <main>
 
-        <button class="nav__open">
+        <button class="nav__openBtn">
             <i class="fa-solid fa-bars"></i>
         </button>
 
