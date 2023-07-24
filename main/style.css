@@ -22,7 +22,7 @@ nav{
     gap: 30px;
     overflow: hidden;
 
-    transform: unset;
+    transform: translate(0%);
 }
 
 main{
@@ -423,7 +423,7 @@ main{
     }
 }
 
-@media screen and (min-width: 481px) and (max-width: 860px){
+@media screen and (max-width: 860px){
     nav{
         align-items: center;
         position: fixed;
@@ -445,10 +445,6 @@ main{
         display: flex;
     }
 
-    .nav__button{
-        font-size: 2.5vw;
-    }
-
     .profile__image{
         max-width: 7vw;
     }
@@ -462,6 +458,9 @@ main{
         width: 36vw;
         height: 36vw;
 
+        min-width: 225px;
+        min-height: 225px;
+        
         top: unset;
         bottom: 0;
         left: 50%;
@@ -474,67 +473,24 @@ main{
 }
 
 @media screen and (max-width: 480px){
-    nav{
-        align-items: center;
-        gap: 45px;
-        padding: 20px 10px;
+    .main__profImg{
+        width: 250px;
+        height: 250px;
     }
-
-    .nav__title{
-        font-size: 0px;
+    .main__bckImg{
+        min-width: 295px;
     }
-
-    .nav__title::first-letter{
-        font-size: 40px;
+    .bckImg__changeBtn{
+        top:10px;
     }
 
     .nav__button{
-        font-size: 25px;
-        width: 100%;
+        font-size: 4vw;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        /* justify-content: center; */
+        /* align-items: center; */
     }
-
     .inner__text{
-        display: none;
-    }
-    .profile__image{
-        display: none;
-    }
-    .faIcon{
-        width: 100%;
-    }
-
-    .search__input{
-        display: none;
-    }
-    .search__button{
-        background-color: white;
-        /* position: unset; */
-        height: 45px;
-        min-width: 45px;
-        border-radius: 45px;
-
-        left: unset;
-        right: unset;
-        /* transform: ; */
-    }
-
-    .main__buttons,.profile__buttons,.setting_buttons{
-        gap: 10px;
-    }
-    .nav__search__open{
-        width: 50vw;
-        transform:translate(50%, -12%);
-        background-color: #8F4AFF;
-        padding: 10px;
-        transition: 0.3s;
-        border-radius: 50px;
-    }
-    .search__open{
-        display: flex;
-        height: 45px;
-        right: 10px;
+        /* display: none; */
     }
 }
