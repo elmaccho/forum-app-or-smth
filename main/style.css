@@ -196,68 +196,83 @@ main{
 
     display: flex;
     align-items: center;
-    gap: 100px;
 }
-
-.sett__box .span{
-    width: 50%;
-}
-
-.sett__bioForm{
-    width: 100%;
+.sett__col1{
+    width: 30%;
+    height: 100%;
+    /* background-color: tomato; */
+    padding: 15px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    align-items: end;
+}
+.sett__col2{
+    width: 70%;
+    height: 100%;
+    /* background-color: gold; */
+    padding: 15px;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
-
-.sett__changeBtn{
-    border: none;
-    font-size: 25px;
-    background-color: transparent;
-    cursor: pointer;
-    font-weight: 600;
+.sett__title{
+    margin: 0;
 }
-
+.sett__form{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /* background-color: lightskyblue; */
+}
+.sett__input{
+    height: 35px;
+    width: 240px;
+    border-radius: 23px;
+    text-indent: 15px;
+    outline: none;
+    border:none;
+}
 .sett__button{
     width: 100px;
-    padding: 8px 20px;
-    border: none;
+    height: 30px;
     background-color: #8F4AFF;
     color: white;
+    outline: none;
+    border: none;
     border-radius: 23px;
     cursor: pointer;
 }
 
 .profile__img{
-    min-width: 10%;
-    max-width: 30%;
+    width: 70%;
 }
 .background__img{
-    width: 50%;
+    width: 100%;
 }
-
-.biography__input{
-    width: 95%;
-    height: 60px;
-    outline: none;
-    border-radius: 23px;
-    border: none;
-    resize: none;
-    padding: 15px;
-}
-
-.biography__span{
-    position: relative;
-    display: flex;
-}
-
 .textarea__counter{
     position: absolute;
-    bottom: 10px;
-    right: 15px;
-    /* width: 0px; */
+    bottom: 15px;
+    right: 10px;
+}
+.biography__span{
+    position: relative;
+    width: 100%;
+}
+.biography__input{
+    width: 100%;
+    resize: none;
+    height: 100px;
+    border-radius: 23px;
+    border: none;
+    outline: none;
+    padding: 15px;
+    box-sizing: border-box;
 }
 
 .main__profile{
