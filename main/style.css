@@ -198,20 +198,20 @@ main{
     align-items: center;
 }
 .sett__col1{
-    width: 30%;
+    width: 40%;
     height: 100%;
     /* background-color: tomato; */
     padding: 15px;
-    box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 15px;
 }
 .sett__col2{
-    width: 70%;
+    width: 60%;
     height: 100%;
     /* background-color: gold; */
-    padding: 15px;
+    padding: 10px;
     box-sizing: border-box;
 
     display: flex;
@@ -229,6 +229,9 @@ main{
     justify-content: center;
     width: 100%;
     /* background-color: lightskyblue; */
+}
+.sett__form:nth-child(n+2){
+    align-items: flex-start;
 }
 .sett__input{
     height: 35px;
@@ -527,6 +530,19 @@ main{
 
     .redSett__btn{
         padding: 1vw 3.5vw;
+    }
+
+    .sett__box{
+        flex-direction: column;
+    }
+    .sett__col1, .sett__col2{
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    .sett__input{
+        width: 100%;
+        max-width: 350px;
     }
 }
 
