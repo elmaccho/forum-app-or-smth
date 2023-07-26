@@ -15,40 +15,55 @@
 
 <div class="main__godpanel">
     <span class="godpanel__title">Panel Administracyjny</span>
+
+    <input type="search" name="" id="" class="user__search__input" placeholder="Wyszukaj użytkownika">
     
     <div class="user__box">
         <img class="user__img" src="./img/PiHQ.png" alt="">
-        <span class="user__fullname">Maciej Chojnacki</span>
-        <span class="user__email">maciek.chojnacki22@wp.pl</span>
-        <span class="user__rank">Właściciel</span>
+
+        <div class="user__col">
+            <span class="user__fullname">Maciej Chojnacki</span>
+            <span class="user__email">maciek.chojnacki22@wp.pl</span>
+            <span class="user__rank">Właściciel</span>
+        </div>
 
         <button class="editUser__btn"><i class="fa-solid fa-ellipsis"></i></button>
     </div>
+
     <div class="user__box">
         <img class="user__img" src="./img/PiHQ.png" alt="">
-        <span class="user__fullname">Maciej Chojnacki</span>
-        <span class="user__email">maciek.chojnacki22@wp.pl</span>
-        <span class="user__rank">Właściciel</span>
+
+        <div class="user__col">
+            <span class="user__fullname">Maciej Chojnacki</span>
+            <span class="user__email">maciek.chojnacki22@wp.pl</span>
+            <span class="user__rank">Właściciel</span>
+        </div>
 
         <button class="editUser__btn"><i class="fa-solid fa-ellipsis"></i></button>
-
     </div>
+
     <div class="user__box">
         <img class="user__img" src="./img/PiHQ.png" alt="">
-        <span class="user__fullname">Maciej Chojnacki</span>
-        <span class="user__email">maciek.chojnacki22@wp.pl</span>
-        <span class="user__rank">Właściciel</span>
+
+        <div class="user__col">
+            <span class="user__fullname">Maciej Chojnacki</span>
+            <span class="user__email">maciek.chojnacki22@wp.pl</span>
+            <span class="user__rank">Właściciel</span>
+        </div>
 
         <button class="editUser__btn"><i class="fa-solid fa-ellipsis"></i></button>
-
     </div>
+
     <div class="user__box">
         <img class="user__img" src="./img/PiHQ.png" alt="">
-        <span class="user__fullname">Maciej Chojnacki</span>
-        <span class="user__email">maciek.chojnacki22@wp.pl</span>
-        <span class="user__rank">Właściciel</span>
+
+        <div class="user__col">
+            <span class="user__fullname">Maciej Chojnacki</span>
+            <span class="user__email">maciek.chojnacki22@wp.pl</span>
+            <span class="user__rank">Właściciel</span>
+        </div>
 
         <button class="editUser__btn"><i class="fa-solid fa-ellipsis"></i></button>
-
     </div>
+
 </div>
