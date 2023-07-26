@@ -16,54 +16,39 @@
 <div class="main__godpanel">
     <span class="godpanel__title">Panel Administracyjny</span>
 
-    <input type="search" name="" id="" class="user__search__input" placeholder="Wyszukaj użytkownika">
+    <input type="text" name="" id="" class="user__search__input" placeholder="Wyszukaj użytkownika">
     
-    <div class="user__box">
-        <img class="user__img" src="./img/PiHQ.png" alt="">
+    <?php
+        $conn = new mysqli("localhost","root","","forumapporsmth");
+        $query = "SELECT * FROM users";
+        $result = $conn->query($query);
 
-        <div class="user__col">
-            <span class="user__fullname">Maciej Chojnacki</span>
-            <span class="user__email">maciek.chojnacki22@wp.pl</span>
-            <span class="user__rank">Właściciel</span>
-        </div>
+        $user_id = $row['id'];
+        $user_pic = $row['profile_img'];
+        $user_name = $row['imie'];
+        $user_lastname = $row['nazwisko'];
+        $user_email = $row['email'];
+        $user_rank = $row['ranga'];
 
-        <button class="editUser__btn"><i class="fa-solid fa-ellipsis"></i></button>
-    </div>
+        if($result->num_rows > 0){
+            while ($row = $result->fetch_assoc()){
+                echo "
+                    <div class='user__box'>
+                        <img class='user__img' src='./img/$user_pic' alt=''>
+                
+                        <div class='user__col'>
+                            <span class='user__fullname'>$user_name $user_lastname</span>
+                            <span class='user__email'>$user_email</span>
+                            <span class='user__rank'>$user_rank</span>
+                        </div>
+                
+                        <button class='editUser__btn'><i class='fa-solid fa-ellipsis'></i></button>
+                    </div>
+                ";
+            }
+        }
 
-    <div class="user__box">
-        <img class="user__img" src="./img/PiHQ.png" alt="">
-
-        <div class="user__col">
-            <span class="user__fullname">Maciej Chojnacki</span>
-            <span class="user__email">maciek.chojnacki22@wp.pl</span>
-            <span class="user__rank">Właściciel</span>
-        </div>
-
-        <button class="editUser__btn"><i class="fa-solid fa-ellipsis"></i></button>
-    </div>
-
-    <div class="user__box">
-        <img class="user__img" src="./img/PiHQ.png" alt="">
-
-        <div class="user__col">
-            <span class="user__fullname">Maciej Chojnacki</span>
-            <span class="user__email">maciek.chojnacki22@wp.pl</span>
-            <span class="user__rank">Właściciel</span>
-        </div>
-
-        <button class="editUser__btn"><i class="fa-solid fa-ellipsis"></i></button>
-    </div>
-
-    <div class="user__box">
-        <img class="user__img" src="./img/PiHQ.png" alt="">
-
-        <div class="user__col">
-            <span class="user__fullname">Maciej Chojnacki</span>
-            <span class="user__email">maciek.chojnacki22@wp.pl</span>
-            <span class="user__rank">Właściciel</span>
-        </div>
-
-        <button class="editUser__btn"><i class="fa-solid fa-ellipsis"></i></button>
-    </div>
+        $conn->close();
+    ?>
 
 </div>

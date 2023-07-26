@@ -443,8 +443,9 @@ main{
     width: 100%;
     text-indent: 15px;
     border-radius: 23px;
-    border: 2px solid #D9D9D9;
+    border: none;
     outline: none;
+    background-color: rgb(245, 245, 245);
 }
 
 .editUser__btn{
