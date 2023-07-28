@@ -34,12 +34,14 @@
                     $user_email = $row['email'];
                     $user_rank = $row['ranga'];
 
+                    $user_fullname = $user_name." ". $user_lastname;
+
                     echo "
                         <div class='user__box'>
                             <img class='user__img' src='./img/$user_pic' alt=''>
                     
                             <div class='user__col'>
-                                <span class='user__fullname'>$user_name $user_lastname</span>
+                                <span class='user__fullname'>$user_fullname</span>
                                 <span class='user__email'>$user_email</span>
                                 <span class='user__rank'>$user_rank</span>
                             </div>
@@ -57,28 +59,34 @@
     <h3 class="errorInfo"></h3>
 
     <script>
-        const userSearchInput = document.querySelector('.user__search__input')
-        const userList = document.querySelector('#userList')
-        const errorInfo = document.querySelector('.errorInfo')
+    const userSearchInput = document.querySelector('.user__search__input');
+    const userList = document.querySelector('#userList');
+    const errorInfo = document.querySelector('.errorInfo');
+    const users = userList.getElementsByClassName('user__box');
 
+    userSearchInput.addEventListener('input', () => {
+        const searchValue = userSearchInput.value.toLowerCase();
 
-        userSearchInput.addEventListener('input', ()=>{
-            const searchValue = userSearchInput.value
-            const users = userList.getElementsByClassName('user__box')
+        let foundUsers = 0;
 
-            for(const user of users){
-                const userName = user.querySelector('.user__fullname').textContent
+        for (const user of users) {
+            const userName = user.querySelector('.user__fullname').textContent.toLowerCase();
 
-                if(userName.includes(searchValue)){
-                    user.style.display = "flex"
-                    userList.style.display = "flex"
-                    errorInfo.textContent = ""
-                } else {
-                    user.style.display = "none"
-                    userList.style.display = "none"
-                    errorInfo.textContent = "Brak użytkowników o podanej nazwie"
-                }
+            if (userName.includes(searchValue)) {
+                user.style.display = "flex";
+                foundUsers++;
+            } else {
+                user.style.display = "none";
             }
-        })
-    </script>
+        }
+
+        if (foundUsers === 0) {
+            userList.style.display = "none";
+            errorInfo.textContent = "Brak użytkowników o podanej nazwie";
+        } else {
+            userList.style.display = "flex";
+            errorInfo.textContent = "";
+        }
+    });
+</script>
 </div>
