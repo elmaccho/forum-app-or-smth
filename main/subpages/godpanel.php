@@ -54,9 +54,12 @@
         ?>
     </span>
 
+    <h3 class="errorInfo"></h3>
+
     <script>
         const userSearchInput = document.querySelector('.user__search__input')
         const userList = document.querySelector('#userList')
+        const errorInfo = document.querySelector('.errorInfo')
 
 
         userSearchInput.addEventListener('input', ()=>{
@@ -68,8 +71,12 @@
 
                 if(userName.includes(searchValue)){
                     user.style.display = "flex"
+                    userList.style.display = "flex"
+                    errorInfo.textContent = ""
                 } else {
                     user.style.display = "none"
+                    userList.style.display = "none"
+                    errorInfo.textContent = "Brak użytkowników o podanej nazwie"
                 }
             }
         })
