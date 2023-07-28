@@ -476,6 +476,35 @@ main{
     border-radius: 50px;
     cursor: pointer;
 }
+.editUser__menu{
+    position: absolute;
+    bottom: -45px;
+    right: 0;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    background-color: white;
+    transform: scale(0);
+    transform-origin: top right;
+    transition: 0.3s;
+
+    padding: 10px;
+    border-radius: 23px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
+}
+.editUser__menu a{
+    text-decoration: none;
+    color: #232323;
+    /* transition: 0.3s; */
+}
+.editUser__menu a:hover{
+    color:#8F4AFF;
+    font-weight: 600;
+}
 
 @media screen and (max-width: 1038px) {
 
@@ -603,5 +632,9 @@ main{
         position: absolute;
         top: 10px;
         right: 10px;
+    }
+    .editUser__menu{
+        bottom: unset;
+        top:0;
     }
 }

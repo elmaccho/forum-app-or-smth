@@ -47,6 +47,13 @@
                             </div>
                     
                             <button class='editUser__btn'><i class='fa-solid fa-ellipsis'></i></button>
+
+                            <div class='editUser__menu'>
+                            <a href=''>Edytuj dane</a>
+                            <a href=''>Edytuj uprawnienia</a>
+                            <a href=''>Zbaduj użytkownika</a>
+                            <a href=''>Usuń użytkownika</a>
+                            </div>
                         </div>
                     ";
                 }
@@ -63,6 +70,9 @@
     const userList = document.querySelector('#userList');
     const errorInfo = document.querySelector('.errorInfo');
     const users = userList.getElementsByClassName('user__box');
+
+    const editUserBtns = document.querySelectorAll('.editUser__btn')
+    const editUserMenus = document.querySelectorAll('.editUser__menu')
 
     userSearchInput.addEventListener('input', () => {
         const searchValue = userSearchInput.value.toLowerCase();
@@ -88,5 +98,19 @@
             errorInfo.textContent = "";
         }
     });
+
+    for(const editUserBtn of editUserBtns)
+    editUserBtn.addEventListener('click', (e)=>{
+        const targetMenu = e.target.closest('div').querySelector('.editUser__menu')
+        targetMenu.style.transform = "scale(1)"
+
+        document.addEventListener('click', (e)=>{
+        if(!targetMenu.contains(e.target) && !editUserBtn.contains(e.target)){
+            targetMenu.style.transform = "scale(0)"
+        }
+        })
+    })
+
+
 </script>
 </div>
