@@ -18,37 +18,60 @@
 
     <input type="text" name="" id="" class="user__search__input" placeholder="Wyszukaj użytkownika">
     
-    <?php
-        $conn = new mysqli("localhost","root","","forumapporsmth");
-        $query = "SELECT * FROM users";
-        $result = $conn->query($query);
+    <span id="userList">
+        <?php
+            $conn = new mysqli("localhost","root","","forumapporsmth");
+            $query = "SELECT * FROM users";
+            $result = $conn->query($query);
 
-        $user_id = $row['id'];
-        $user_pic = $row['profile_img'];
-        $user_name = $row['imie'];
-        $user_lastname = $row['nazwisko'];
-        $user_email = $row['email'];
-        $user_rank = $row['ranga'];
+            if($result->num_rows > 0){
+                while ($row = $result->fetch_assoc()){
 
-        if($result->num_rows > 0){
-            while ($row = $result->fetch_assoc()){
-                echo "
-                    <div class='user__box'>
-                        <img class='user__img' src='./img/$user_pic' alt=''>
-                
-                        <div class='user__col'>
-                            <span class='user__fullname'>$user_name $user_lastname</span>
-                            <span class='user__email'>$user_email</span>
-                            <span class='user__rank'>$user_rank</span>
+                    $user_id = $row['id'];
+                    $user_pic = $row['profile_img'];
+                    $user_name = $row['imie'];
+                    $user_lastname = $row['nazwisko'];
+                    $user_email = $row['email'];
+                    $user_rank = $row['ranga'];
+
+                    echo "
+                        <div class='user__box'>
+                            <img class='user__img' src='./img/$user_pic' alt=''>
+                    
+                            <div class='user__col'>
+                                <span class='user__fullname'>$user_name $user_lastname</span>
+                                <span class='user__email'>$user_email</span>
+                                <span class='user__rank'>$user_rank</span>
+                            </div>
+                    
+                            <button class='editUser__btn'><i class='fa-solid fa-ellipsis'></i></button>
                         </div>
-                
-                        <button class='editUser__btn'><i class='fa-solid fa-ellipsis'></i></button>
-                    </div>
-                ";
+                    ";
+                }
             }
-        }
 
-        $conn->close();
-    ?>
+            $conn->close();
+        ?>
+    </span>
 
+    <script>
+        const userSearchInput = document.querySelector('.user__search__input')
+        const userList = document.querySelector('#userList')
+
+
+        userSearchInput.addEventListener('input', ()=>{
+            const searchValue = userSearchInput.value
+            const users = userList.getElementsByClassName('user__box')
+
+            for(const user of users){
+                const userName = user.querySelector('.user__fullname').textContent
+
+                if(userName.includes(searchValue)){
+                    user.style.display = "flex"
+                } else {
+                    user.style.display = "none"
+                }
+            }
+        })
+    </script>
 </div>

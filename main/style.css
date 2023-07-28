@@ -410,6 +410,11 @@ main{
     text-align: center;
 }
 
+#userList{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
 .user__box{
     display: flex;
     align-items: center;
