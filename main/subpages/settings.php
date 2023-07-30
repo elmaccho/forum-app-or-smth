@@ -8,7 +8,7 @@
             </h2>
             <form method="post" class="sett__form" enctype="multipart/form-data">
                 <input type="hidden" name="MAX_FILE_SIZE" value="900000">
-                <input type="file" name="profileImg" id=""><br>
+                <input type="file" name="profileImg"><br>
                 <input type="submit" value="Wyślij" class="sett__button">
             </form>
         </div>
@@ -89,7 +89,7 @@
             </h2>
             <form method="post" class="sett__form" enctype="multipart/form-data">
                 <input type="hidden" name="MAX_FILE_SIZE" value="9000000">
-                <input type="file" name="backgroundImg" id=""><br>
+                <input type="file" name="backgroundImg"><br>
                 <input type="submit" value="Wyślij" class="sett__button">
             </form>
         </div>

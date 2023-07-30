@@ -416,10 +416,10 @@ main{
     gap: 15px;
     overflow-y: scroll;
     min-height: 80px;
-    max-height: 400px;
+    max-height: 450px;
 
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-    padding: 10px;
+    padding: 35px 20px;
     border-radius: 23px;
 }
 #userList::-webkit-scrollbar {
@@ -480,7 +480,7 @@ main{
     position: absolute;
     bottom: -45px;
     right: 0;
-    z-index: 1;
+    z-index: 2;
 
     display: flex;
     flex-direction: column;
@@ -499,7 +499,6 @@ main{
 .editUser__menu a{
     text-decoration: none;
     color: #232323;
-    /* transition: 0.3s; */
 }
 .editUser__menu a:hover{
     color:#8F4AFF;
