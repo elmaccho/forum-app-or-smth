@@ -13,11 +13,15 @@
 ?>
 
 <div class="edit__data">
-1
+    <button class="closeDataBtn">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
 </div>
 
 <div class="edit__rank">
-2
+    <button class="closeRankBtn">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
 </div>
 
 <div class="main__godpanel">
@@ -56,9 +60,9 @@
                             <button class='editUser__btn'><i class='fa-solid fa-ellipsis'></i></button>
 
                             <div class='editUser__menu'>
-                            <a href=''>Edytuj dane</a>
-                            <a href=''>Zmień rangę</a>
-                            <a href=''>Zbaduj użytkownika</a>
+                            <a class='openDataBtn' href='#'>Edytuj dane</a>
+                            <a class='openRankBtn' href='#'>Zmień rangę</a>
+                            <a href=''>Zbanuj użytkownika</a>
                             <a href=''>Usuń użytkownika</a>
                             </div>
                         </div>
@@ -80,7 +84,17 @@
 
         const editUserBtns = document.querySelectorAll('.editUser__btn')
         const editUserMenus = document.querySelectorAll('.editUser__menu')
+        const actionBtns = document.querySelectorAll('.editUser__menu a')
         
+        const openDataBtn = document.querySelector('.openDataBtn')
+        const closeDataBtn = document.querySelector('.closeDataBtn')
+        const openRankBtn = document.querySelector('.openRankBtn')
+        const closeRankBtn = document.querySelector('.closeRankBtn')
+        const editData = document.querySelector('.edit__data')
+        const editRank = document.querySelector('.edit__rank')
+        
+
+
         userSearchInput.addEventListener('input', () => {
             const searchValue = userSearchInput.value.toLowerCase();
 
@@ -116,6 +130,52 @@
                 targetMenu.style.transform = "scale(0)"
             }
             })
+
+            for(const actionBtn of actionBtns){
+            actionBtn.addEventListener('click', (e)=>{
+                targetMenu.style.transform = "scale(0)"
+            })
+        }
+        })
+
+
+        // DATAMENU
+
+        const openDataMenu = () => {
+            editData.style.transform = "translate(-50%, -50%)"
+        }
+
+        const closeDataMenu = () => {
+            editData.style.transform = "translate(100%, -50%)"
+        }
+
+        openDataBtn.addEventListener('click', openDataMenu)
+        closeDataBtn.addEventListener('click', closeDataMenu)
+
+        document.addEventListener('click', (e)=>{
+            if(!editData.contains(e.target) && !openDataBtn.contains(e.target)){
+                closeDataMenu()
+            }
+        })
+
+
+        // RANKMENU
+
+        const openRankMenu = () => {
+            editRank.style.transform = "translate(-50%, -50%)"
+        }
+
+        const closeRankMenu = () => {
+            editRank.style.transform = "translate(100%, -50%)"
+        }
+
+        openRankBtn.addEventListener('click', openRankMenu)
+        closeRankBtn.addEventListener('click', closeRankMenu)
+
+        document.addEventListener('click', (e)=>{
+            if(!editRank.contains(e.target) && !openRankBtn.contains(e.target)){
+                closeRankMenu()
+            }
         })
     </script>
 </div>
