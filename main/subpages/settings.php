@@ -190,7 +190,10 @@
                         die("Błąd połączenia z bazą danych: " . $conn->connect_error);
                     }
                     $biography = $conn->real_escape_string($biography);
-                    $query = "UPDATE users SET biogram = '$biography' WHERE email = '$email'";
+                    $query = "UPDATE users SET biogram = ? WHERE email = ?";
+                    $stmt = $conn->prepare($query);
+                    $stmt->bind_param("ss", $biography, $email);
+                    $stmt->execute();
 
                     if($conn->query($query) === TRUE){
                         header("Refresh:2");

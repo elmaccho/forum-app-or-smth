@@ -12,6 +12,13 @@
     }
 ?>
 
+<div class="edit__data">
+1
+</div>
+
+<div class="edit__rank">
+2
+</div>
 
 <div class="main__godpanel">
     <span class="godpanel__title">Panel Administracyjny</span>
@@ -73,7 +80,7 @@
 
         const editUserBtns = document.querySelectorAll('.editUser__btn')
         const editUserMenus = document.querySelectorAll('.editUser__menu')
-
+        
         userSearchInput.addEventListener('input', () => {
             const searchValue = userSearchInput.value.toLowerCase();
 
