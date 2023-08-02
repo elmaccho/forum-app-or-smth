@@ -51,10 +51,6 @@ main{
     display: none;
 }
 
-.closeNav{
-
-}
-
 .nav__openBtn{
     position: fixed;
     z-index: 1;
@@ -405,7 +401,7 @@ main{
     gap: 15px;
 }
 
-.godpanel__title{
+.godpanel__title, .newpost__title{
     font-size: 45px;
     text-align: center;
 }
@@ -521,6 +517,55 @@ main{
 
     padding: 15px;
     box-sizing: border-box;
+}
+
+.newpost{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.newpost__form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    background-color: #D9D9D9;
+    border-radius: 23px;
+    padding: 15px;
+    width: 85%;
+}
+
+.newpost__input{
+    height: 35px;
+    width: 80%;
+    border-radius: 23px;
+    outline: none;
+    border: none;
+}
+
+.title__input{
+    text-indent: 15px;
+}
+.desc__input{
+    resize: none;
+    padding: 15px;
+    box-sizing: border-box;
+    height: 105px;
+}
+.newpost__submit{
+    padding: 10px 35px;
+    border-radius: 23px;
+    background-color: #9A5FFB;
+    border: none;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 1038px) {
