@@ -42,8 +42,8 @@
         </div>
 
         <div class="post__comments">
-            <input type="text" name="" id="" placeholder="Dodaj komentarz...">
-            <button type="submit"><i class="fa-regular fa-comment-dots"></i></button>
+            <input class="comments__input" type="text" name="" placeholder="Dodaj komentarz...">
+            <button class='comments__submit' type="submit"><i class="fa-regular fa-comment-dots"></i></button>
         </div>
 
     </div>
