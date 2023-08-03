@@ -22,7 +22,7 @@
         
 
         <div class="post__img">
-            <img src="./img/Bez nazwy.png" alt="">
+            <!-- <img src="./img/Bez nazwy.png" alt=""> -->
         </div>
 
         <div class="post__info">
@@ -41,10 +41,10 @@
             </div>
         </div>
 
-        <div class="post__comments">
-            <input class="comments__input" type="text" name="" placeholder="Dodaj komentarz...">
-            <button class='comments__submit' type="submit"><i class="fa-regular fa-comment-dots"></i></button>
-        </div>
+        <form class="post__comments">
+                <input class="comments__input" type="text" name="" placeholder="Dodaj komentarz...">
+                <button class='comments__submit' type="submit"><i class="fa-regular fa-comment-dots"></i></button>
+        </form>
 
     </div>
 </div>
