@@ -17,6 +17,7 @@
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
 
+    $userId = $row['id'];
     $name = $row['imie'];
     $lastname = $row['nazwisko'];
     $password = $row['haslo'];
