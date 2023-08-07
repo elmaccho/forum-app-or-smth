@@ -1,10 +1,7 @@
 <?php
-    
-
-
     function showUsers(){
         $conn = new mysqli("localhost","root","","forumapporsmth");
-        $query = "SELECT * FROM users";
+        $query = "SELECT `id`, `imie`, `nazwisko`, `email`, `profile_img`, `ranga` FROM `users`";
         $result = $conn->query($query);
         
         if ($result->num_rows > 0) {

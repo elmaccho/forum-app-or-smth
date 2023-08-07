@@ -6,7 +6,7 @@
         </button>
 
         <span class="post__author__img">
-            <img src="./img/profile/profile-default.jpg" alt="">
+            <img src="./img/350470195_3561143987507183_4522951566672627173_n.jpg" alt="">
             <div class="post__author__info">
                 <div class="author__name">Maciej Chojnacki</div>
                 <span class="author__rank">Właściciel</span>
@@ -47,6 +47,10 @@
         </form>
 
     </div>
+
+    <?php
+
+    ?>
 </div>
 
 

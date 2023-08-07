@@ -41,6 +41,7 @@
 </head>
 <body>
     <nav>
+        <!-- <img src="./img/350470195_3561143987507183_4522951566672627173_n.jpg" alt=""> -->
 
         <button class="nav__closeBtn">
             <i class="fa-solid fa-xmark"></i>
