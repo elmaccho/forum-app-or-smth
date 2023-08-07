@@ -573,6 +573,7 @@ main{
     display: flex;
     align-items: center;
     flex-direction: column;
+    gap: 45px;
 }
 
 .post{
@@ -587,6 +588,15 @@ main{
     width: 580px;
     margin: 0 auto;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; 
+}
+.post__title-wrapper{
+    width: 100%;
+    padding: 15px;
+}
+.post__title{
+    font-weight: 600;
+    font-size: 25px;
+    margin: 0;
 }
 .post__actionBtn{
     border: none;

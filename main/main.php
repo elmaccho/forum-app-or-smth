@@ -114,7 +114,6 @@
                     <span class="inner__text">Ustawienia</span>
                 </span>
             </a>
-            
             <?php
                 if($rank === "Administrator" || $rank === "Właściciel"){
                     echo "
