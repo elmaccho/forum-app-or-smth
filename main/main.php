@@ -126,9 +126,6 @@
                     ";
                 }
             ?>
-            
-
-            
         </div>
 
         <div class="logout__pannel">

@@ -44,29 +44,4 @@
     const errorInfo = document.querySelector('.errorInfo');
     const users = userList.getElementsByClassName('user__box');
 
-    // userSearchInput.addEventListener('input', () => {
-    //     const searchValue = userSearchInput.value.toLowerCase();
-
-    //     let foundUsers = 0;
-
-    //     for (const user of users) {
-    //         const userName = user.querySelector('.user__fullname').textContent.toLowerCase();
-
-    //         if (userName.includes(searchValue)) {
-    //             user.style.display = "flex";
-    //             foundUsers++;
-    //         } else {
-    //             user.style.display = "none";
-    //         }
-    //     }
-
-    //     if (foundUsers === 0) {
-    //         userList.style.display = "none";
-    //         errorInfo.textContent = "Brak użytkowników o podanej nazwie";
-    //     } else {
-    //         userList.style.display = "flex";
-    //         errorInfo.textContent = "";
-    //     }
-    // });
-
 </script>

@@ -17,34 +17,36 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (isset($_POST['newpostTitle']) && isset($_POST['newpostDesc']) && isset($_POST['postCategory']) &&
-            !empty($_POST['newpostTitle']) && !empty($_POST['postCategory'])) {
+            !empty($_POST['newpostTitle']) && !empty($_POST['newpostDesc']) && !empty($_POST['postCategory'])) {
 
             $newpostTitle = $_POST['newpostTitle'];
             $newpostDesc = $_POST['newpostDesc'];
             $postCategory = $_POST['postCategory'];
 
-            $newpostImagesName = $_FILES['newpostImages']['name'];
-            $newpostImagesTmpName = $_FILES['newpostImages']['tmp_name'];
+            $newpostImagesName = "";
+            if (!empty($_FILES['newpostImages']['name'])) {
+                $newpostImagesName = $_FILES['newpostImages']['name'];
+                $newpostImagesTmpName = $_FILES['newpostImages']['tmp_name'];
+                $targetDir = "./postImg/";
+                $targetFile = $targetDir . basename($newpostImagesName);
+                if (!move_uploaded_file($newpostImagesTmpName, $targetFile)) {
+                    echo "Błąd przy przesyłaniu pliku.";
+                    exit;
+                }
+            }
 
             $conn = new mysqli("localhost", "root", "", "forumapporsmth");
 
             if ($conn->connect_error) {
-                die("Błąd połączenia z bazą danych: " . $conn->connect_error);
+                die("Błąd połączenia z bazą danych: ". $conn->connect_error);
             }
 
-            $targetDir = "./postImg/";
-            $targetFile = $targetDir . basename($newpostImagesName);
+            $query = "INSERT INTO posts (tytul, autor_id, tresc, opis, kategoria) VALUES ('$newpostTitle', '$userId', '$newpostImagesName', '$newpostDesc', '$postCategory')";
 
-            if (move_uploaded_file($newpostImagesTmpName, $targetFile)) {
-                $query = "INSERT INTO posts (tytul, autor_id, tresc, opis, kategoria) VALUES ('$newpostTitle', '$userId', '$newpostImagesName', '$newpostDesc', '$postCategory')";
-
-                if ($conn->query($query) === TRUE) {
-                    echo "Dodano post";
-                } else {
-                    echo "Błąd przy dodawaniu posta: " . $conn->error;
-                }
+            if ($conn->query($query) === TRUE) {
+                echo "Dodano post";
             } else {
-                echo "Błąd przy przesyłaniu pliku.";
+                echo "Błąd przy dodawaniu posta: " . $conn->error;
             }
 
             $conn->close();

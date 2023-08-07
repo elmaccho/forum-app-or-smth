@@ -49,7 +49,7 @@
                     </span>
                     
                     <div class='post__img'>
-                        <img src='postImg/$postImg'>
+                        <img src='postImg/$postImg' alt=''>
                     </div>
             
                     <div class='post__info'>
@@ -70,7 +70,7 @@
             
                     <form class='post__comments'>
                             <input class='comments__input' type='text' name='comment' placeholder='Dodaj komentarz...'>
-                            <button class='comments__submit' type='submit'><i class='fa-regular fa-comment-dots'></i></button>
+                            <button class='comments__submit'><i class='fa-regular fa-comment-dots'></i></button>
                     </form>
         
                 </div>";
