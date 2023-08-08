@@ -678,7 +678,7 @@ main{
 }
 .post__comments{
     display: flex;
-    width: 95%;
+    width: 100%;
 }
 .comments__input{
     height: 35px;
@@ -698,20 +698,70 @@ main{
     font-size: 20px;
 }
 
+.post__comments-wrapper{
+    box-sizing: border-box;
+    position: relative;
+    padding: 5px 0;
+}
 .post__comm{
+    padding: 10px 40px 10px 0px;
     display: flex;
     flex-direction: column;
+    position: relative;
+    gap: 5px;
 }
 .comm__row-info{
+    position: relative;
+    align-items: center;
+    width: 100%;
     display: flex;
+    gap: 10px;
+}
+.comm__info-userInfo{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
 }
 .comm__info-img{
-    width: 50px;
+    width: 45px;
+    height: 45px;
 }
 .comm__info-img img{
     width: 100%;
     border-radius: 8px;
 }
+.comm__userName{
+    font-weight: 600;
+    font-size: 22px;
+}
+.comm__userRank{
+    font-size: 15px;
+    position: relative;
+    top: -5px;
+}
+.comm__dateAdded{
+    position: absolute;
+    top:5px;
+    right: 5px;
+}
+.comm__actionBtn{
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+.comm__row-content{
+    padding-left: 55px;
+}
+.comm__row-content hr{
+    width: 100%;
+}
+
 
 @media screen and (max-width: 1038px) {
 

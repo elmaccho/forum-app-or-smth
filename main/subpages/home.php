@@ -70,7 +70,7 @@
                                     07.08.2023
                                 </span>
                              </div>
-                             <div class="comm_row-content">
+                             <div class="comm__row-content">
                                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                                 Quia, totam expedita magni fugit quis esse minus 
                                 laudantium ut modi consectetur ab quisquam. Suscipit et 
@@ -78,7 +78,43 @@
                                 laboriosam itaque eaque saepe nulla distinctio fugit 
                                 expedita consectetur hic harum repellat, omnis veniam! 
                                 Iste asperiores maxime amet.
+                                <hr>
                              </div>
+
+                        </div>
+
+                        <div class="post__comm">
+                            <button class="comm__actionBtn"><i class="fa-solid fa-ellipsis"></i></button>
+
+                             <div class="comm__row-info">
+                                <div class="comm__info-img">
+                                    <img src="./img/364026801_3566251460325160_2469454463339477737_n.jpg" alt="Maciej Chojnacki">
+                                </div>
+                                <div class="comm__info-userInfo">
+                                    <span class="comm__userName">
+                                        Maciej Chojnacki
+                                    </span>
+                                    <div class="comm__userRank">
+                                        Właściciel
+                                    </div>
+                                </div>
+                                <span class="comm__dateAdded">
+                                    07.08.2023
+                                </span>
+                             </div>
+                             <div class="comm__row-content">
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                Quia, totam expedita magni fugit quis esse minus 
+                                laudantium ut modi consectetur ab quisquam. Suscipit et 
+                                maxime magni esse odit eos repudiandae, eveniet error 
+                                laboriosam itaque eaque saepe nulla distinctio fugit 
+                                expedita consectetur hic harum repellat, omnis veniam! 
+                                Iste asperiores maxime amet.
+
+                                <hr>
+                             </div>
+
+                             
                         </div>
                     </div>
          
