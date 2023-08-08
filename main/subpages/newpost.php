@@ -17,7 +17,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (isset($_POST['newpostTitle']) && isset($_POST['newpostDesc']) && isset($_POST['postCategory']) &&
-            !empty($_POST['newpostTitle']) && !empty($_POST['newpostDesc']) && !empty($_POST['postCategory'])) {
+            !empty($_POST['newpostTitle']) && !empty($_POST['postCategory'])) {
 
             $newpostTitle = $_POST['newpostTitle'];
             $newpostDesc = $_POST['newpostDesc'];
