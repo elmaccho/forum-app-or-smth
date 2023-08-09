@@ -705,6 +705,7 @@ main{
     display: flex;
     flex-direction: column;
     gap: 15px;
+    width: 100%;
 }
 .post__comm{
     padding: 10px 40px 10px 0px;

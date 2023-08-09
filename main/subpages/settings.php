@@ -99,68 +99,68 @@
             ?>
         </div>
             <?php
-                // if (isset($_POST['backgroundImg'])) {
-                //     $backgroundImg = $_POST['backgroundImg'];
+                if (isset($_POST['backgroundImg'])) {
+                    $backgroundImg = $_POST['backgroundImg'];
 
-                //     $conn = new mysqli("localhost", "root", "", "forumapporsmth");
+                    $conn = new mysqli("localhost", "root", "", "forumapporsmth");
 
-                //     if ($conn->connect_error) {
-                //         die("Błąd połączenia z bazą danych: " . $conn->connect_error);
-                //     }
-                //     $backgroundImg = $conn->real_escape_string($backgroundImg);
-                //     $query = "UPDATE users SET background_img = '$backgroundImg' WHERE email = '$email'";
+                    if ($conn->connect_error) {
+                        die("Błąd połączenia z bazą danych: " . $conn->connect_error);
+                    }
+                    $backgroundImg = $conn->real_escape_string($backgroundImg);
+                    $query = "UPDATE users SET background_img = '$backgroundImg' WHERE email = '$email'";
 
-                //     if ($conn->query($query) === TRUE) {
+                    if ($conn->query($query) === TRUE) {
 
-                //     } else {
-                //         echo "Błąd podczas aktualizacji profilowego: " . $conn->error;
-                //     }
+                    } else {
+                        echo "Błąd podczas aktualizacji profilowego: " . $conn->error;
+                    }
                     
-                //     $conn->close();
-                // }
+                    $conn->close();
+                }
 
-                // if(isset($_FILES['backgroundImg'])){
-                //     switch ($_FILES['backgroundImg']['error']) {
-                //         case 0:
-                //             if ($_FILES['backgroundImg']['type'] == "image/jpeg" || $_FILES['backgroundImg']['type'] == "image/png" || $_FILES['backgroundImg']['type'] == "image/webp") {
-                //                 move_uploaded_file($_FILES['backgroundImg']['tmp_name'], "./img/" . $_FILES['backgroundImg']['name']);
+                if(isset($_FILES['backgroundImg'])){
+                    switch ($_FILES['backgroundImg']['error']) {
+                        case 0:
+                            if ($_FILES['backgroundImg']['type'] == "image/jpeg" || $_FILES['backgroundImg']['type'] == "image/png" || $_FILES['backgroundImg']['type'] == "image/webp") {
+                                move_uploaded_file($_FILES['backgroundImg']['tmp_name'], "./img/" . $_FILES['backgroundImg']['name']);
 
-                //                 $conn = new mysqli("localhost", "root", "", "forumapporsmth");
+                                $conn = new mysqli("localhost", "root", "", "forumapporsmth");
 
-                //                 if ($conn->connect_error) {
-                //                     die("Błąd połączenia z bazą danych: " . $conn->connect_error);
-                //                 }
+                                if ($conn->connect_error) {
+                                    die("Błąd połączenia z bazą danych: " . $conn->connect_error);
+                                }
 
-                //                 $backgroundImg = $conn->real_escape_string($_FILES['backgroundImg']['name']);
-                //                 $query = "UPDATE users SET background_img = '$backgroundImg' WHERE email = '$email'";
+                                $backgroundImg = $conn->real_escape_string($_FILES['backgroundImg']['name']);
+                                $query = "UPDATE users SET background_img = '$backgroundImg' WHERE email = '$email'";
 
-                //                 if ($conn->query($query) === TRUE) {
-                //                     header("Refresh:0");
-                //                 } else {
-                //                     echo "Błąd podczas aktualizacji profilowego: " . $conn->error;
-                //                 }
+                                if ($conn->query($query) === TRUE) {
+                                    header("Refresh:0");
+                                } else {
+                                    echo "Błąd podczas aktualizacji profilowego: " . $conn->error;
+                                }
                                 
-                //                 $conn->close();
-                //             } else {
-                //                 echo "Niedozwolone rozszerzenie pliku";
-                //             }
-                //             break;
-                //         case 1:
-                //             echo "Za duży plik (PHP.ini)";
-                //             break;
-                //         case 2:
-                //             echo "Za duży plik";
-                //             break;
-                //         case 3:
-                //             echo "Niepełny plik";
-                //             break;
-                //         case 4:
-                //             echo "Nie wybrano pliku";
-                //             break;
-                //         default:
-                //             echo "Nieznany błąd. Prosimy o kontakt";
-                //     }
-                // }
+                                $conn->close();
+                            } else {
+                                echo "Niedozwolone rozszerzenie pliku";
+                            }
+                            break;
+                        case 1:
+                            echo "Za duży plik (PHP.ini)";
+                            break;
+                        case 2:
+                            echo "Za duży plik";
+                            break;
+                        case 3:
+                            echo "Niepełny plik";
+                            break;
+                        case 4:
+                            echo "Nie wybrano pliku";
+                            break;
+                        default:
+                            echo "Nieznany błąd. Prosimy o kontakt";
+                    }
+                }
             ?>
     </div>
     <div class="sett__box">
